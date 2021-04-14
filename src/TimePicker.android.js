@@ -66,14 +66,14 @@ export default class TimePicker extends React.Component<Props, State> {
       <View style={[styles.container, { backgroundColor: this.props.backgroundColor }]}>
         <WheelPicker
           isCyclic
-          // style={styles.wheelPicker}
+          style={styles.wheelPicker}
           {...this.props}
           data={hours}
           onItemSelected={this.onHourSelected}
           selectedItem={selectedHourIndex}
         />
         <WheelPicker
-          // style={styles.wheelPicker}
+          style={styles.wheelPicker}
           isCyclic
           {...this.props}
           data={minutes}
@@ -142,12 +142,12 @@ export default class TimePicker extends React.Component<Props, State> {
 
 const styles = StyleSheet.create({
   container: {
-    // alignItems: 'center',
+    alignItems: 'center',
     flexDirection: 'row',
   },
   wheelPicker: {
     height: 150,
-    width: 150,
+    width: 120,
     flex: 1,
   },
 })

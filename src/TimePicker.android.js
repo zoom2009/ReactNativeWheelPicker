@@ -37,7 +37,7 @@ type State = {
 export default class TimePicker extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props)
-    const { initDate, format24, minutes } = props
+    const { initDate, format24, minutes, initSelectedHourIndex, initSelectedMinuteIndex } = props
     const selectedDate = initDate ? new Date(initDate) : new Date()
     const time12format = hourTo12Format(selectedDate.getHours())
     const time24format = selectedDate.getHours()
@@ -53,8 +53,8 @@ export default class TimePicker extends React.Component<Props, State> {
       selectedDate,
       hours,
       minutes: minutes || getFiveMinutesArray(),
-      selectedHourIndex,
-      selectedMinuteIndex,
+      selectedHourIndex: initSelectedHourIndex,
+      selectedMinuteIndex: initSelectedMinuteIndex,
       selectedAmIndex,
     }
   }
@@ -71,7 +71,6 @@ export default class TimePicker extends React.Component<Props, State> {
           data={hours}
           onItemSelected={this.onHourSelected}
           selectedItem={selectedHourIndex}
-          initPosition={selectedHourIndex}
         />
         <WheelPicker
           // style={styles.wheelPicker}
@@ -80,7 +79,6 @@ export default class TimePicker extends React.Component<Props, State> {
           data={minutes}
           onItemSelected={this.onMinuteSelected}
           selectedItem={selectedMinuteIndex}
-          initPosition={selectedMinuteIndex}
         />
         {!this.props.format24 && this.renderAm()}
       </View>

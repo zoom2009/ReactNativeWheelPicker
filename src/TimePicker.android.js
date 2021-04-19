@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, StyleSheet } from 'react-native'
+import { Dimensions, View, StyleSheet } from 'react-native'
 import WheelPicker from './WheelPicker'
 import {
   hourTo24Format,
@@ -8,6 +8,8 @@ import {
   getFiveMinutesArray,
   getAmArray,
 } from './Utils'
+
+const { width } = Dimensions.get('window')
 
 const AM = 'AM'
 const HOUR = 60
@@ -141,13 +143,6 @@ export default class TimePicker extends React.Component<Props, State> {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    alignItems: 'center',
-    flexDirection: 'row',
-  },
-  wheelPicker: {
-    height: 150,
-    width: 120,
-    flex: 1,
-  },
+  container: { alignItems: 'center', flexDirection: 'row', height: 150, width, alignSelf: 'center', justifyContent: 'center' },
+  wheelPicker: { height: 150, width: 120 },
 })
